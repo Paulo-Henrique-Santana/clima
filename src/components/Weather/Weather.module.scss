@@ -1,0 +1,51 @@
+@use "../../styles/variables";
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1rem;
+  box-shadow: 0px 0px 5px rgb(0 0 0 / 30%);
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  width: 100%;
+  background-color: variables.$bg-color;
+}
+
+.local {
+  flex: 1;
+  font-size: 1.6rem;
+}
+
+.date {
+  flex: 1;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.leftContainer {
+  flex: 1;
+  display: flex;
+  gap: 1.5rem;
+  > img {
+    max-width: 140px;
+  }
+  .temperature {
+    font-size: 4rem;
+    justify-self: center;
+    align-self: center;
+  }
+}
+
+.rightContainer {
+  flex: 1;
+  align-self: center;
+  line-height: 1.5;
+  font-size: 1.15rem;
+  text-align: center;
+  .description {
+    font-size: 1.5rem;
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
