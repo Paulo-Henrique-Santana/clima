@@ -1,6 +1,9 @@
 import sun from "../../img/sun.png";
 import cloudy from "../../img/cloudy.png";
 import clearSky from "../../img/clear-sky.png";
+import snowy from "../../img/snowy.png";
+import lightRain from "../../img/light-rain.png";
+import storm from "../../img/storm.png";
 import styles from "./Weather.module.scss";
 
 interface Props {
@@ -39,6 +42,9 @@ const Weather = ({ data }: Props) => {
       { name: "céu limpo", src: sun },
       { name: "nuvens dispersas", src: clearSky },
       { name: "algumas nuvens", src: clearSky },
+      { name: "pouca neve", src: snowy },
+      { name: "chuva leve", src: lightRain },
+      { name: "trovoadas", src: storm },
     ];
     const img = images.find((item) => item.name === description);
 
@@ -60,13 +66,15 @@ const Weather = ({ data }: Props) => {
         <p className={styles.local}>{`${name}, ${country}`}</p>
 
         <div className={styles.date}>
-          <span>{`${dayWeek}, ${dayMonth} ${month}`}</span> |{" "}
-          <span>{`${hours}:${minutes}`}</span>
+          <span>{`${dayWeek}, ${dayMonth} ${month}`}</span>{" "}
+          <span className={styles.hour}>{`${hours}:${minutes}`}</span>
         </div>
 
         <div className={styles.leftContainer}>
           <img src={img?.src} alt="" />
-          <p className={styles.temperature}>{Math.round(temp)}º</p>
+          <p className={styles.temperature}>
+            {Math.round(temp)}º<span className={styles.celsius}>C</span>
+          </p>
         </div>
 
         <div className={styles.rightContainer}>

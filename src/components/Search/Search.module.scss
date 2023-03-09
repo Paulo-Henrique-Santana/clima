@@ -1,10 +1,50 @@
+@use "../../styles/variables";
+
+$bd-radius: 10px;
+$bd-width: 2px;
+$bd-color: rgba(0, 0, 0, 0.6);
+$color1: rgba(0, 0, 0, 0.9);
+
 .container {
   display: flex;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   width: 80%;
+
   input {
     flex: 1;
-    padding: 0.2rem 0.3rem;
+    padding: 0.4rem 0.5rem;
+    outline: none;
+    border-radius: $bd-radius 0 0 $bd-radius;
+    border-width: $bd-width 0 $bd-width $bd-width;
+    min-width: 0;
     font-size: 1.1rem;
+    color: $color1;
+    &:focus,
+    &:focus + button {
+      border-color: $bd-color;
+    }
+    &::placeholder {
+      color: $color1;
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    border-radius: 0 $bd-radius $bd-radius 0;
+    border-width: $bd-width $bd-width $bd-width 0;
+    cursor: pointer;
+    > svg {
+      margin: 0 0.6rem;
+      font-size: 1.3rem;
+      color: $color1;
+    }
+  }
+
+  input,
+  button {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-color: transparent;
+    border-style: solid;
   }
 }

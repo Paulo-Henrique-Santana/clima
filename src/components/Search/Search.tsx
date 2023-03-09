@@ -1,4 +1,5 @@
 import { Dispatch, FormEvent, SetStateAction } from "react";
+import { BsSearch } from "react-icons/bs";
 import styles from "./Search.module.scss";
 
 interface Props {
@@ -17,7 +18,9 @@ const Search = ({ search, setSearch, searchWeather }: Props) => {
         placeholder="Busque por uma cidade"
         required
       />
-      <button>Buscar</button>
+      <button>
+        <BsSearch />
+      </button>
     </form>
   );
 };
