@@ -1,80 +1,72 @@
 @use "../../styles/variables";
 @use "../../styles/mixins";
 
+$margin-top1: 1rem;
+$margin-top2: 0.3rem;
+
 .container {
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 0px 0px 5px rgb(0 0 0 / 30%);
-  border-radius: 20px;
-  padding: 1.5rem;
-  width: 100%;
-  background-color: rgba($color: #0a121d, $alpha: 0.5);
-  @include mixins.tablet {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 2rem;
-    max-width: 300px;
-  }
-}
-
-.local {
-  align-self: center;
-  font-size: 1.6rem;
-  color: variables.$font-color2;
-  @include mixins.tablet {
-    text-align: center;
-  }
-}
-
-.date {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  align-self: flex-end;
-  font-size: 1.3rem;
   text-align: center;
+  box-shadow: 0px 0px 7px rgb(0 0 0 / 30%);
+  border-radius: 20px;
+  padding: 2rem 1.8rem;
+  background-color: rgba($color: #0a121d, $alpha: 0.5);
   color: variables.$font-color2;
-  .hour {
-    font-size: 1.4rem;
-  }
-}
 
-.leftContainer {
-  display: flex;
-  gap: 1.2rem;
-  > img {
-    max-width: 140px;
-  }
-  .temperature {
-    font-size: 4rem;
-    justify-self: center;
-    align-self: center;
+  .local {
+    font-size: 1.9rem;
+    font-weight: bold;
     color: variables.$font-color1;
-    .celsius {
-      margin-left: 0.1rem;
-      font-size: 2rem;
+  }
+
+  .hour {
+    margin-top: $margin-top1;
+    font-size: 1.5rem;
+  }
+
+  .date {
+    margin-top: $margin-top2;
+    font-size: 1.4rem;
+    color: variables.$font-color2;
+  }
+
+  .containerTemp {
+    @include mixins.flex-center;
+    flex-wrap: wrap;
+    column-gap: 1rem;
+    margin-top: 1rem;
+    > img {
+      max-width: 150px;
+    }
+    .temperature {
+      font-size: 4rem;
+      color: variables.$font-color1;
+      .celsius {
+        margin-left: 0.1rem;
+        font-size: 2.5rem;
+      }
     }
   }
-  @include mixins.tablet {
-    flex-direction: column;
-    align-items: center;
-  }
-}
 
-.rightContainer {
-  align-self: center;
-  line-height: 1.5;
-  font-size: 1.1rem;
-  text-align: center;
-  color: variables.$font-color2;
   .description {
+    margin-top: 1rem;
     font-size: 1.7rem;
     font-weight: bold;
     color: variables.$font-color1;
     &::first-letter {
       text-transform: uppercase;
     }
+  }
+
+  .humidity {
+    margin-top: $margin-top1;
+  }
+
+  .windSpeed {
+    margin-top: $margin-top2;
+  }
+
+  .humidity,
+  .windSpeed {
+    font-size: 1.1rem;
   }
 }

@@ -1,17 +1,27 @@
 @use "./styles/variables";
+@use "./styles/mixins";
 
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include mixins.flex-center;
   flex-direction: column;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   width: 100vw;
-  max-width: 650px;
-}
+  max-width: 500px;
 
-h1 {
-  margin: 5rem 0 3rem 0;
-  font-size: 3rem;
-  color: variables.$font-color1;
+  h1 {
+    margin: 6rem 0 3rem 0;
+    font-size: 3rem;
+    color: variables.$font-color1;
+  }
+
+  .containerSearch {
+    @include mixins.flex-center;
+    min-height: 400px;
+  }
+
+  .error {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: variables.$font-color2;
+  }
 }

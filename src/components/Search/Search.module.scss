@@ -1,4 +1,5 @@
 @use "../../styles/variables";
+@use "../../styles/mixins";
 
 $bd-radius: 10px;
 $bd-width: 2px;
@@ -7,7 +8,7 @@ $color1: rgba(0, 0, 0, 0.9);
 .container {
   display: flex;
   margin-bottom: 3rem;
-  width: 80%;
+  width: 100%;
 
   input {
     flex: 1;
@@ -28,8 +29,7 @@ $color1: rgba(0, 0, 0, 0.9);
   }
 
   button {
-    display: flex;
-    align-items: center;
+    @include mixins.flex-center;
     border-radius: 0 $bd-radius $bd-radius 0;
     border-width: $bd-width $bd-width $bd-width 0;
     cursor: pointer;

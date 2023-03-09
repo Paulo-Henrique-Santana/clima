@@ -2,23 +2,30 @@ import { FormEvent, useState } from "react";
 import Search from "./components/Search/Search";
 import Weather from "./components/Weather/Weather";
 import styles from "./App.module.scss";
+import Loading from "./components/Loading/Loading";
 
 const App = () => {
   const [data, setData] = useState<null | Data>(null);
   const [search, setSearch] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const searchWeather = async (event: FormEvent) => {
     event.preventDefault();
     try {
+      setSearch("");
+      setLoading(true);
       const id = "055d59851906713defd94a70b5fe1b05";
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=${id}&lang=pt_br`
       );
 
-      if (response.status === 404) throw new Error("Cidade não encontrada");
+      if (response.status === 404) {
+        throw new Error(`Cidade \"${search}\" não encontrada`);
+      }
 
+      setError("");
       const json = await response.json();
-
       const {
         weather: [{ description }],
         main: { temp, humidity },
@@ -27,10 +34,11 @@ const App = () => {
         timezone,
         name,
       } = json;
-
       setData({ description, temp, humidity, country, speed, timezone, name });
     } catch (error) {
-      if (error instanceof Error) console.error(error.message);
+      if (error instanceof Error) setError(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -42,7 +50,11 @@ const App = () => {
         setSearch={setSearch}
         searchWeather={searchWeather}
       />
-      <Weather data={data} />
+      <div className={styles.containerSearch}>
+        {loading && <Loading />}
+        {!loading && error && <div className={styles.error}>{error}</div>}
+        {!loading && !error && <Weather data={data} />}
+      </div>
     </section>
   );
 };

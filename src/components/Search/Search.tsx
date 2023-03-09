@@ -15,7 +15,7 @@ const Search = ({ search, setSearch, searchWeather }: Props) => {
         value={search}
         onChange={({ target }) => setSearch(target.value)}
         type="text"
-        placeholder="Busque por uma cidade"
+        placeholder="Ex: São Paulo ou São Paulo, BR"
         required
       />
       <button>

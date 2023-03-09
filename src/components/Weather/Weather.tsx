@@ -3,6 +3,7 @@ import cloudy from "../../img/cloudy.png";
 import clearSky from "../../img/clear-sky.png";
 import snowy from "../../img/snowy.png";
 import lightRain from "../../img/light-rain.png";
+import moderateRain from "../../img/moderate-rain.png";
 import storm from "../../img/storm.png";
 import styles from "./Weather.module.scss";
 
@@ -38,13 +39,15 @@ const Weather = ({ data }: Props) => {
       "dezembro",
     ];
     const images = [
-      { name: "nublado", src: cloudy },
       { name: "céu limpo", src: sun },
-      { name: "nuvens dispersas", src: clearSky },
       { name: "algumas nuvens", src: clearSky },
-      { name: "pouca neve", src: snowy },
+      { name: "nuvens dispersas", src: clearSky },
+      { name: "nublado", src: cloudy },
       { name: "chuva leve", src: lightRain },
+      { name: "chuva moderada", src: moderateRain },
       { name: "trovoadas", src: storm },
+      { name: "trovoada com chuva", src: storm },
+      { name: "pouca neve", src: snowy },
     ];
     const img = images.find((item) => item.name === description);
 
@@ -64,26 +67,21 @@ const Weather = ({ data }: Props) => {
     return (
       <div className={styles.container}>
         <p className={styles.local}>{`${name}, ${country}`}</p>
+        <p className={styles.hour}>{`${hours}:${minutes}`}</p>
+        <p className={styles.date}>{`${dayWeek}, ${dayMonth} ${month}`}</p>
 
-        <div className={styles.date}>
-          <span>{`${dayWeek}, ${dayMonth} ${month}`}</span>{" "}
-          <span className={styles.hour}>{`${hours}:${minutes}`}</span>
-        </div>
-
-        <div className={styles.leftContainer}>
-          <img src={img?.src} alt="" />
+        <div className={styles.containerTemp}>
+          <img src={img?.src} />
           <p className={styles.temperature}>
             {Math.round(temp)}º<span className={styles.celsius}>C</span>
           </p>
         </div>
 
-        <div className={styles.rightContainer}>
-          <p className={styles.description}>{description}</p>
-          <p className={styles.humidity}>Umidade: {humidity}%</p>
-          <p className={styles.windSpeed}>
-            Vento: {Math.round(speed * 3.6)} km/h
-          </p>
-        </div>
+        <p className={styles.description}>{description}</p>
+        <p className={styles.humidity}>Umidade: {humidity}%</p>
+        <p className={styles.windSpeed}>
+          Vento: {Math.round(speed * 3.6)} km/h
+        </p>
       </div>
     );
   } else return <></>;
