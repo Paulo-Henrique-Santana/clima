@@ -2,7 +2,6 @@
 
 $bd-radius: 10px;
 $bd-width: 2px;
-$bd-color: rgba(0, 0, 0, 0.6);
 $color1: rgba(0, 0, 0, 0.9);
 
 .container {
@@ -21,10 +20,10 @@ $color1: rgba(0, 0, 0, 0.9);
     color: $color1;
     &:focus,
     &:focus + button {
-      border-color: $bd-color;
+      border-color: rgba(0, 0, 0, 0.6);
     }
     &::placeholder {
-      color: $color1;
+      color: rgba(0, 0, 0, 0.6);
     }
   }
 
