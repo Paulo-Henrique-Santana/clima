@@ -12,16 +12,19 @@ const App = () => {
 
   const searchWeather = async (event: FormEvent) => {
     event.preventDefault();
+
     try {
       setSearch("");
       setLoading(true);
+
       const id = "055d59851906713defd94a70b5fe1b05";
+      const cleanSearch = search.trim();
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=${id}&lang=pt_br`
+        `https://api.openweathermap.org/data/2.5/weather?q=${cleanSearch}&units=metric&appid=${id}&lang=pt_br`
       );
 
       if (response.status === 404) {
-        throw new Error(`Cidade \"${search}\" não encontrada`);
+        throw new Error(`Cidade \"${cleanSearch}\" não encontrada`);
       }
 
       setError("");
@@ -45,11 +48,13 @@ const App = () => {
   return (
     <section className={styles.container}>
       <h1>Clima</h1>
+
       <Search
         search={search}
         setSearch={setSearch}
         searchWeather={searchWeather}
       />
+
       <div className={styles.containerSearch}>
         {loading && <Loading />}
         {!loading && error && <div className={styles.error}>{error}</div>}
