@@ -2,6 +2,7 @@ import sun from "../../img/sun.png";
 import cloudy from "../../img/cloudy.png";
 import clearSky from "../../img/clear-sky.png";
 import snowy from "../../img/snowy.png";
+import foog from "../../img/foog.png";
 import lightRain from "../../img/light-rain.png";
 import moderateRain from "../../img/moderate-rain.png";
 import storm from "../../img/storm.png";
@@ -43,10 +44,12 @@ const Weather = ({ data }: Props) => {
       { name: "algumas nuvens", src: clearSky },
       { name: "nuvens dispersas", src: clearSky },
       { name: "nublado", src: cloudy },
+      { name: "névoa", src: foog },
       { name: "chuva leve", src: lightRain },
       { name: "chuva moderada", src: moderateRain },
       { name: "trovoadas", src: storm },
       { name: "trovoada com chuva", src: storm },
+      { name: "trovoada com chuva forte", src: storm },
       { name: "pouca neve", src: snowy },
     ];
     const img = images.find((item) => item.name === description);
