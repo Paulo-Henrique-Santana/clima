@@ -1,11 +1,3 @@
-import sun from "../../img/sun.png";
-import cloudy from "../../img/cloudy.png";
-import clearSky from "../../img/clear-sky.png";
-import snowy from "../../img/snowy.png";
-import foog from "../../img/foog.png";
-import lightRain from "../../img/light-rain.png";
-import moderateRain from "../../img/moderate-rain.png";
-import storm from "../../img/storm.png";
 import styles from "./Weather.module.scss";
 
 interface Props {
@@ -14,8 +6,16 @@ interface Props {
 
 const Weather = ({ data }: Props) => {
   if (data) {
-    const { description, temp, humidity, country, speed, timezone, name } =
-      data;
+    const {
+      description,
+      icon,
+      temp,
+      humidity,
+      country,
+      speed,
+      timezone,
+      name,
+    } = data;
     const daysWeek = [
       "domingo",
       "segunda-feira",
@@ -39,20 +39,6 @@ const Weather = ({ data }: Props) => {
       "novembro",
       "dezembro",
     ];
-    const images = [
-      { name: "céu limpo", src: sun },
-      { name: "algumas nuvens", src: clearSky },
-      { name: "nuvens dispersas", src: clearSky },
-      { name: "nublado", src: cloudy },
-      { name: "névoa", src: foog },
-      { name: "chuva leve", src: lightRain },
-      { name: "chuva moderada", src: moderateRain },
-      { name: "trovoadas", src: storm },
-      { name: "trovoada com chuva", src: storm },
-      { name: "trovoada com chuva forte", src: storm },
-      { name: "pouca neve", src: snowy },
-    ];
-    const img = images.find((item) => item.name === description);
 
     const date = new Date();
     date.setTime(date.getTime() + timezone * 1000);
@@ -69,12 +55,20 @@ const Weather = ({ data }: Props) => {
 
     return (
       <div className={styles.container}>
-        <p className={styles.local}>{`${name}, ${country}`}</p>
+        <p className={styles.local}>
+          {name}
+          {country && `, ${country}`}
+        </p>
         <p className={styles.hour}>{`${hours}:${minutes}`}</p>
         <p className={styles.date}>{`${dayWeek}, ${dayMonth} ${month}`}</p>
 
         <div className={styles.containerTemp}>
-          <img src={img?.src} />
+          <div
+            className={styles.img}
+            style={{
+              backgroundImage: `url(https://openweathermap.org/img/wn/${icon}@4x.png)`,
+            }}
+          ></div>
           <p className={styles.temperature}>
             {Math.round(temp)}º<span className={styles.celsius}>C</span>
           </p>

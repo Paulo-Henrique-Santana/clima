@@ -1,5 +1,6 @@
 interface Data {
   description: string;
+  icon: string;
   temp: number;
   humidity: number;
   country: string;

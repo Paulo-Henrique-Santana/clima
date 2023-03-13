@@ -30,14 +30,23 @@ const App = () => {
       setError("");
       const json = await response.json();
       const {
-        weather: [{ description }],
+        weather: [{ description, icon }],
         main: { temp, humidity },
         sys: { country },
         wind: { speed },
         timezone,
         name,
       } = json;
-      setData({ description, temp, humidity, country, speed, timezone, name });
+      setData({
+        description,
+        icon,
+        temp,
+        humidity,
+        country,
+        speed,
+        timezone,
+        name,
+      });
     } catch (error) {
       if (error instanceof Error) setError(error.message);
     } finally {

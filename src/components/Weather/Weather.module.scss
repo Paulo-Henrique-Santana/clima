@@ -8,7 +8,8 @@ $margin-top2: 0.3rem;
   text-align: center;
   box-shadow: 0px 0px 7px rgb(0 0 0 / 30%);
   border-radius: 20px;
-  padding: 2rem 1.8rem;
+  padding: 2rem 1.5rem;
+  max-width: 350px;
   background-color: rgba($color: #0a121d, $alpha: 0.5);
   color: variables.$font-color2;
 
@@ -33,12 +34,14 @@ $margin-top2: 0.3rem;
     @include mixins.flex-center;
     flex-wrap: wrap;
     column-gap: 1rem;
-    margin-top: 1rem;
-    > img {
-      max-width: 150px;
+    margin-top: 0.5rem;
+    .img {
+      width: 150px;
+      height: 140px;
+      background-position: center;
     }
     .temperature {
-      font-size: 4rem;
+      font-size: 3.5rem;
       color: variables.$font-color1;
       .celsius {
         margin-left: 0.1rem;
@@ -48,7 +51,7 @@ $margin-top2: 0.3rem;
   }
 
   .description {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     font-size: 1.7rem;
     font-weight: bold;
     color: variables.$font-color1;
